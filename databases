@@ -1,0 +1,145 @@
+Prequisite of Mysql
+
+https://docs.cloudera.com/documentation/enterprise/5-12-x/topics/cm_ig_mysql.html
+
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+sudo yum update
+sudo yum install mysql-server
+sudo systemctl start mysqld
+
+2> sudo service mysqld stop
+Move old InnoDB log files to a backup location
+sudo mv /var/lib/mysql/ib_logfile0 /home/centos/mysql/
+sudo mv /var/lib/mysql/ib_logfile1 /home/centos/mysql/
+sudo vi /etc/my.cnf
+
+[mysqld]
+transaction-isolation = READ-COMMITTED
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+# symbolic-links = 0
+
+key_buffer_size = 32M
+max_allowed_packet = 32M
+thread_stack = 256K
+thread_cache_size = 64
+query_cache_limit = 8M
+query_cache_size = 64M
+query_cache_type = 1
+
+max_connections = 550
+#expire_logs_days = 10
+#max_binlog_size = 100M
+
+#log_bin should be on a disk with enough free space. Replace '/var/lib/mysql/mysql_binary_log' with an appropriate path for your system
+#and chown the specified folder to the mysql user.
+log_bin=/var/lib/mysql/mysql_binary_log
+
+# For MySQL version 5.1.8 or later. For older versions, reference MySQL documentation for configuration help.
+binlog_format = mixed
+
+read_buffer_size = 2M
+read_rnd_buffer_size = 16M
+sort_buffer_size = 8M
+join_buffer_size = 8M
+
+# InnoDB settings
+innodb_file_per_table = 1
+innodb_flush_log_at_trx_commit  = 2
+innodb_log_buffer_size = 64M
+innodb_buffer_pool_size = 4G
+innodb_thread_concurrency = 8
+innodb_flush_method = O_DIRECT
+innodb_log_file_size = 512M
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+sql_mode=STRICT_ALL_TABLES
+
+
+
+3>
+mysql
+mysql> show table status; (should not set myISAM engine)
+sudo /sbin/chkconfig mysqld on
+$ sudo /sbin/chkconfig --list mysqld
+
+4>
+
+$ sudo /usr/bin/mysql_secure_installation
+[...]
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+[...]
+Set root password? [Y/n] y
+New password:
+Re-enter new password:
+Remove anonymous users? [Y/n] Y
+[...]
+Disallow root login remotely? [Y/n] N
+[...]
+Remove test database and access to it [Y/n] Y
+[...]
+Reload privilege tables now? [Y/n] Y
+All done!
+
+5>Install JDBC driver
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.48.tar.gz
+tar zxvf mysql-connector-java-5.1.48.tar.gz
+sudo mkdir -p /usr/share/java/
+sudo cp mysql-connector-java-5.1.48/mysql-connector-java-5.1.48-bin.jar /usr/share/java/mysql-connector-java.jar
+
+6>
+mysql -u root -p
+Enter password:
+
+
+7> creating databases
+
+CREATE DATABASE sentry DEFAULT CHARACTER SET utf8 ; 
+SHOW DATABASES;
+use sentry;
+create user sentry;
+grant all on sentry.* TO 'sentry'@'localhost'  IDENTIFIED BY 'password';
+flush privileges;
+SHOW DATABASES;
+show grants for sentry;
+exit;
+
+CREATE DATABASE amon DEFAULT CHARACTER SET utf8 ; 
+SHOW DATABASES;
+use amon;
+create user amon;
+grant all on amon.* TO 'amon'@'localhost'  IDENTIFIED BY 'password';
+flush privileges;
+SHOW DATABASES;
+show grants for amon;
+
+CREATE DATABASE rman DEFAULT CHARACTER SET utf8 ; 
+SHOW DATABASES;
+use rman;
+create user rman;
+grant all on rman.* TO 'rman'@'localhost'  IDENTIFIED BY 'password';
+flush privileges;
+SHOW DATABASES;
+show grants for rman;
+
+CREATE DATABASE metastore DEFAULT CHARACTER SET utf8 ; 
+SHOW DATABASES;
+use metastore;
+create user metastore;
+grant all on metastore.* TO 'metastore'@'localhost'  IDENTIFIED BY 'password';
+flush privileges;
+SHOW DATABASES;
+show grants for metastore;
+
+create database oozie default character set utf8;
+use oozie;
+create user oozie;
+grant all privileges on oozie.* to 'oozie'@'localhost' identified by 'password';
+grant all privileges on oozie.* to 'oozie'@'%' identified by 'password';
+flush privileges;
+show grants for oozie;

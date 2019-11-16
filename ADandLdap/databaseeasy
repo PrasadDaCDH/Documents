@@ -1,0 +1,133 @@
+
+Step 1: sudo -i
+
+Step 2: passwd
+(set password for root)
+
+Step 3: yum update
+
+Step 4: yum install wget
+
+Step 5: wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+
+Step 6: rpm -ivh mysql-community-release-el7-5.noarch.rpm
+
+Step 7: yum update
+
+Step 8: yum install mysql-server
+
+Step 9: service mysqld status
+
+Step 10: systemctl start mysqld
+
+Step 11: service mysqld status
+
+Step 12: mysql_secure_installation
+ 
+Step 14: mysql -u root -p
+
+
+create database hue DEFAULT CHARACTER SET utf8;
+grant all on hue.* TO 'hue'@'%' IDENTIFIED BY 'password';
+
+create database hive DEFAULT CHARACTER SET utf8;
+grant all on hive.* TO 'hive'@'%' IDENTIFIED BY 'password';
+
+create database rman DEFAULT CHARACTER SET utf8;
+grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'password';
+
+create database navs DEFAULT CHARACTER SET utf8;
+grant all on navs.* TO 'navs'@'%' IDENTIFIED BY 'password';
+
+create database navms DEFAULT CHARACTER SET utf8;
+grant all on navms.* TO 'navms'@'%' IDENTIFIED BY 'password';
+
+create database oozie DEFAULT CHARACTER SET utf8;
+grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'password';
+
+create database actmo DEFAULT CHARACTER SET utf8;
+grant all on actmo.* TO 'actmo'@'%' IDENTIFIED BY 'password';
+
+create database sentry DEFAULT CHARACTER SET utf8;
+grant all on sentry.* TO 'sentry'@'%' IDENTIFIED BY 'password';
+
+grant all on *.* to 'temp'@'%' identified by 'password' with grant option;
+
+Exit
+
+chkconfig mysqld on
+
+yum install mysql-connector-java
+
+cd /etc/ yum.repos.d/
+wget https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
+
+vi cloudera-manager.repo
+ 
+
+Cd
+yum install oracle-j2sdk1.7
+
+ 
+ls -la /usr/java
+ 
+
+yum install cloudera-manager-server cloudera-manager-daemons
+ 
+
+rpm -qa 'cloudera-manager-*'
+ 
+
+mysql -u root -p
+ 
+Exit
+/usr/share/cmf/schema/scm_prepare_database.sh mysql -h ip-10-0-0-143.ec2.internal -utemp -ppassword --scm-host ip-10-0-0-143.ec2.internal scmdb scmusr password
+ 
+
+mysql -u root -p
+ 
+less /etc/cloudera-scm-server/db.properties
+(for exit Press :q Enter)
+ 
+
+drop user 'temp'@'%';
+ 
+service cloudera-scm-server status
+ 
+
+service cloudera-scm-server start
+ 
+
+tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+ 
+
+netstat -nap | grep 7180
+ 
+
+ 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+
+
