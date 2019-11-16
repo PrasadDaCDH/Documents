@@ -1,0 +1,20 @@
+For database on centos 6
+yum install mysql-connector-java
+
+selinux disable 
+sudo vi /etc/selinux/config
+disabled
+
+sudo vi /etc/rc.local
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+sudo su -c 'cat >>/etc/sysctl.conf <<EOL
+net.ipv6.conf.all.disable_ipv6 =1
+net.ipv6.conf.default.disable_ipv6 =1
+net.ipv6.conf.lo.disable_ipv6 =1
+vm.swappiness=1
+EOL'
+
+sudo service iptables stop
+sudo chkconfig iptables off

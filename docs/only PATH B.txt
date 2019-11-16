@@ -1,0 +1,133 @@
+sudo su
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+sudo vi /etc/sysctl.conf
+net.ipv6.conf.lo.disable_ipv6=1
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+vm.swappiness=1
+
+sudo apt install ntp -y
+
+https://clouderanow.com/agenda2019
+https://www.cloudera.com/documentation/enterprise/5-4-x/topics/installation_reqts.html#xd_583c10bfdbd326ba-7dae4aa6-147c30d0933--7fa3
+
+Centos AMI version 6
+Access via SSH to the instance and run sudo fdisk /dev/xvda
+press c
+press u
+press p to show current partitions
+press d to delete current partitions NOTE: data is not lost, since it is a Das
+press n to create a new partition
+press p to set it as primary
+press 1 to set the first cylinder
+Press enter (Set the desired new space,if empty the whole space is reserved)
+press a to make it bootable
+press 1 and w to write changes
+Reboot instance
+
+Creating a WebServer.
+
+
+    sudo yum install httpd -y
+    sudo chkconfig httpd on
+    sudo service httpd status
+    sudo service httpd start
+    
+wget --no-check-certificate http://archive.cloudera.com/cm5/repo-as-tarball/5.13.3/cm5.13.3-centos6.tar.gz
+
+wget --no-check-certificate http://archive.cloudera.com/cdh5/repo-as-tarball/5.13.3/cdh5.13.3-centos6.tar.gz
+
+sudo tar -zxvf  cdh5.13.3-centos6.tar.gz -C /var/www/html/
+
+sudo tar -zxvf cm5.13.3-centos6.tar.gz -C /var/www/html/
+     
+
+ls -ld /var/www/html/*
+
+     
+sudo mv /var/www/html/cm/cloudera-manager.repo  /var/www/html/cm/cloudera-manager.repo.save     
+     
+
+     cd /etc/yum.repos.d/
+
+     sudo nano cloudera-manager.repo
+
+[cloudera-manager]
+name=cloudera manager
+baseurl=http://10.0.0.130/cm/5.4.5
+gpgcheck = 1
+gpgkey =http://10.0.0.130/cm/RPM-GPG-KEY-cloudera
+
+
+:wq
+
+
+
+     cat cloudera-manager.repo 
+
+   sudo cp /etc/yum.repos.d/cloudera-manager.repo    /var/www/html/cm/cloudera-manager.repo
+     
+sudo yum clean all
+
+
+     sudo yum repolist all
+
+   	echo -e  'y\n'| ssh-keygen -t rsa -P "" -f $HOME/.ssh/id_rsa
+    cat  ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && ssh localhost
+
+
+
+    wget --no-check-certificate http://archive.cloudera.com/cm5/installer/5.13.3/cloudera-manager-installer.bin
+    
+	chmod +x cloudera-manager-installer.bin
+
+    sudo ./cloudera-manager-installer.bin --skip_repo_package=1
+
+   sudo service cloudera-scm-server status
+
+   sudo su
+
+   cd
+
+select packages on cloudera manager screen
+custom repository
+http://10.0.0.130/cdh/5.4.0
+
+http://10.0.3.45/cm/5
+
+http://10.0.3.45/cm/RPM-GPG-KEY-cloudera
+
+echo ec2-18-207-240-56.compute-1.amazonaws.com > cm 
+
+ssh -i security.pem centos@`cat cm`
+
+The url is the cm hostname:7180
+the username and password is admin/admin
+
+Cloudera Manager, or CM 
+
+Shows you service or nodes health and charts
+Lets you start and stop service or nodes
+Tells you dependent service or nodes and warns you if you do things out of order
+It lets you stop servi or nanoces from management by "deleting" them
+It also lets you add servi or nanoces
+It surfaces role assignment information and lets you assign roles, but it
+makes a guess as to the proper assignments
+we will install hue and oozie it should be oozie and hue.
+CM lets you change the configurations of the servi or nanoces. This automatically
+edits the corresponding hadoop config xml files and deploys them, tracking
+the changes over time.
+Check  hadoop command with the user centos hadoop fs -ls /
+we will uncheck "Check HDFS Permissions" which causes hdfs-site.xml
+to get regenerated with dfs.permissions set to false.
+
+CM lets you know when configurations are stale and servi or nanoces need restarting
+CM makes "safety valves" available where you can provi or nanode xml snippets for
+properties that are not explicitly available in the UI
+we can put a bit of text in a Safety Valve
+
+
+http://www.cloudera.com/products/cloudera-manager.html
+http://www.cloudera.com/documentation/enterprise/latest/topics/cm_intro_primer.html

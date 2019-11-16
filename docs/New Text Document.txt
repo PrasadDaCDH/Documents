@@ -1,0 +1,68 @@
+PREQUISITE: ONLY FOR CENTOS 7
+sudo su
+passwd
+
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/check-pre-req.sh
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_iptables.sh 
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_ipv6.sh 
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_selinux.sh 
+ wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/disable_thp.sh 
+ wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_lzo.sh 
+ wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_nscd.sh 
+ wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_ntp.sh 
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_tools.sh 
+ wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/remove_tuned.sh 
+ wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/tune_kernel.sh 
+
+wget https://s3.amazonaws.com/cloud-age/jdk-8u162-linux-x64.rpm
+sudo rpm -Uv jdk-8u162-linux-x64.rpm
+
+sudo yum install sssd -y
+sudo service sssd start
+sudo chkconfig sssd on
+sudo service postfix stop
+sudo chkconfig postfix off
+sysctl vm.swappiness=1 
+vi /proc/sys/vm/swappiness
+ 
+sudo sh check-pre-req.sh  
+ 
+
+DIRECTOR:S
+
+POWER SHELL:
+
+python --version 
+https://www.python.org/downloads/release/python-372/
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_clouderadirector.sh 
+Install python with path
+
+pip3 install awscli
+python -m pip install --upgrade pip
+
+aws --version
+aws configure
+Enter AWS access KEY and secret key
+us-east 2
+json
+
+aws ec2 describe-regions
+aws ec2 describe-instances
+
+aws ec2 run-instances --image-id ami-jasfljasf --count 1 --instance-type m4.large --key-name ohio --security-group-ids sg-klasjfkl --subnet-id subnet-klsjfklasjf
+
+Login to director machine using putty
+
+wget https://s3.amazonaws.com/cloud-age/MIT_kerberos/prerequisite/install_clouderadirector.sh 
+
+sudo sh install---.sh
+
+vi cluster.conf (or change the file in /usr/lib64/cloudera-direcotor/client/aws-simple.conf)
+
+edit all configuataion
+
+sudo sh launch-cloudera.sh (paste : 
+	cloudera-director bootstrap-remote ./cluster.conf --lp.remote.username=admin --lp.remote.password=admin --lp.remote.hostAndPort=localhost:7189)
+
+watch the fun
