@@ -100,9 +100,53 @@ mvn package
 
 ======================================================================
 Nexcus Repository management:
+Video link:
+https://www.youtube.com/watch?v=vcAyOiI97AU
+
+How to get Nexus For free OSS
+https://blog.sonatype.com/how-to-get-started-with-nexus-repository-manager-oss
 
 
+It is Repo Management Tool:
+Dev in JAVA
+Release:
+    Comunity -> Free with limited funtion (only store mini functions)
+    Professional -> Paid 
+    
+Availablity of packages
+Security of Package (Role base access)
+Durablity
+Easy Administration And Maintainence
 
+How to install?
+JDK+JRE
+
+How to install nexus?
+https://www.devopsschool.com/blog/how-to-install-and-configure-sonatype-nexus/
+
+Configure with Maven?
+https://www.devopsschool.com/blog/how-to-configure-sonatype-nexus-repository-with-maven/
+
+Diffrence between Nexus and Artifactory?
+https://www.devopsschool.com/blog/difference-between-jfrog-and-nexus/
+
+Types of Repositories:
+Hosted ----> Local stored
+Proxy -----> A chache is downloaded from the remote and stored in the proxy repositories
+Groups -----> Where it is centeralize all hosted and Proxied
+
+
+Using Maven:
+How to upload to nexus
+1> Modify the pom file with repo location.
+2>Modify setting xml with permission
+3>Mvn Deploy
+
+
+Download to Nexus
+1>Modify dependant lib 
+2>Modify setting xml with mirrors
+3>mvn compile | test | install
 
 
 
