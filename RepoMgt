@@ -1,0 +1,57 @@
+JFROG:
+Artifactory is a Repo management Tool
+
+Types of packages it can support:
+https://www.jfrog.com/confluence/display/JFROG/Package+Management
+
+Artifactory oss VS pro
+oss is free
+pro is paid
+
+Why we need it?
+
+Role base access management
+storing the dependancies 
+automate the package versioning
+Package security
+dev op tools we can use 
+packages are stored there
+builds we store there 
+we can do versioning for them
+data Integrety
+Backup for Archive
+
+Nexsus (free)----> Archiva (apache archiva)
+
+How to set up for Artifactory?
+https://www.devopsschool.com/blog/setup-artifactory-pro-6-1-0-using-docker-containtainer/
+https://www.youtube.com/watch?v=-PlHdGA4kp0
+
+1>Download the file (OSS will not ask for the licencing)
+Artifactory download for oss version 
+https://jfrog.com/community/download-artifactory-oss/
+
+
+OR 
+
+wget https://releases.jfrog.io/artifactory/artifactory-pro-rpms/artifactory-pro-rpms.repo -O jfrog-artifactory-pro-rpms.repo;
+sudo mv jfrog-artifactory-pro-rpms.repo /etc/yum.repos.d/;
+sudo yum update && sudo yum install jfrog-artifactory-pro
+(for licencing)
+
+
+Free:
+
+Type of repos are less
+
+===============================================================
+
+Workflow of Jfrog:
+
+step 1:
+Create repository
+remote
+local
+
+Step 2:
+Create users and roles:
