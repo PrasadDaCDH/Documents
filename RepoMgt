@@ -55,3 +55,72 @@ local
 
 Step 2:
 Create users and roles:
+
+Step 3:
+Modify Pom.xml and add distribution element
+
+Step 4:
+Modify Setting.xml and add server element
+
+Step 5:
+MVN Deploy
+
+Video:
+https://www.youtube.com/watch?v=kg-g5DCa1Hw
+
+
+Maven:
+It uses 
+Setting.xml to Download (mirror)
+Pom.xml To upload (distribution_management)
+
+For Download:
+
+Step 1:
+Create a group Repo
+
+Step 2:
+locate the package
+  Remote an local package
+  
+step 3:
+Delete from local maven repo
+Delete from Junit
+(Because will download from artifactory)
+
+Step 4:
+Modfiy setting.xml add mirror element
+and add with group names and url
+
+Step 5:
+use mavan
+
+mvn package 
+
+
+======================================================================
+Nexcus Repository management:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
