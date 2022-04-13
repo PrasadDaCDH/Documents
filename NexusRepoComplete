@@ -1,0 +1,16 @@
+How to InstaLL?
+https://help.sonatype.com/learning/repository-manager-3/first-time-installation-and-setup/lesson-1%3A--installing-and-starting-nexus-repository-manager?preview=%2F16351968%2F16351969%2Fchange_PW.png
+
+https://help.sonatype.com/repomanager2/installing-and-running
+
+Life Cycle of the Applicaiton packages:
+source File --> Binar file ---> Create a packakage ---> Archive in a repo ----> Download and upload
+code file --> class file ---> package jar file --> Nexus ---> upload and download
+
+
+Repository Management Systems
+types:
+1>Central : Can be accessed by anyone (Docker Hub,Google play store, yum repository)
+2>Private: For internal use in the organiasation (Nexus,Jfrog,Archiva)
+3>Local: on the system (m2 in maven)
+
