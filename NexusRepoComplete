@@ -14,3 +14,28 @@ types:
 2>Private: For internal use in the organiasation (Nexus,Jfrog,Archiva)
 3>Local: on the system (m2 in maven)
 
+What is Nexus?
+It is Repository Manager
+(it does not version the source code )
+versioning is ment for packages
+nexus has Universal support for all popular build tools for packages
+
+Prequisites:
+JRE + JDK 8
+Memory 4GB
+CPU 2
+
+
+How to install?
+
+Step 1: 
+Do prequisite of installing JAVA and JDK 8
+
+Step 2:
+Download the Nexus OSS package from
+https://help.sonatype.com/repomanager3/product-information/download
+
+With Registration
+https://www.sonatype.com/products/repository-oss-download
+
+
