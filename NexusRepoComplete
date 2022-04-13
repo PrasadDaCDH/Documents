@@ -46,4 +46,41 @@ tar -zxvf
 cd nexus
 cd etc
 Go nexus-deafault.properties
+(understand this)
+
+cd bin
+./nexus start
+
+Step 4:
+Login
+Click Sign in> get the admin passwd
+
+
+Step 5:
+go for authentication
+
+Go to seeting:
+go to roles and user and create them
+
+Types of Repos types:
+1>Hosted : for internal use
+2>Proxy : it has Cache
+3>Group : For both for central repo
+
+Step 6:
+Types of Repo in Maven:
+Release 
+Snapshot
+
+Go to settings > Create the Repository (for hosted maven for releaese)
+get the centreal repo for maven
+
+Now useing that url create an proxy repository for maven for snapshot or release
+
+Now create a gruop for Maven
+and add all the repos
+
+
+
+
 
