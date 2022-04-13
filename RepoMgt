@@ -149,6 +149,25 @@ Download to Nexus
 3>mvn compile | test | install
 
 
+Nexus Pricing:
+https://www.sonatype.com/products/repository-pro?hsLang=en-us
+======================================================================
+
+Apache Repo Mnager:
+https://archiva.apache.org/download.cgi
+
+Information:
+https://archiva.apache.org/docs/2.2.7/adminguide/configuration-files.html
+
+Step 1> download the tar file 
+Step 2> untar it
+
+Step 3>/bin/archiva console
+
+step 4>if you want to change the port 
+configure jetty.xml 
+Change port to 8082 or 9595
+
 
 
 
