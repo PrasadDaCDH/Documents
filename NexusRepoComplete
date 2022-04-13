@@ -38,4 +38,12 @@ https://help.sonatype.com/repomanager3/product-information/download
 With Registration
 https://www.sonatype.com/products/repository-oss-download
 
+Step 3:
+Untar the file
+
+tar -zxvf
+
+cd nexus
+cd etc
+Go nexus-deafault.properties
 
