@@ -1,0 +1,12 @@
+What is Maven?
+https://www.youtube.com/watch?v=cTzvrCm9P9E
+Maven is a build tool.
+
+Pom.xml:
+Dependacies:->lib/jar files
+Plugins:-> configurations
+
+What ever you give to remote repository to comes to local repository
+
+Dependancies download lib requires from the remote repository of maven.
+Plugins will have configuration 
