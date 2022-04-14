@@ -1,6 +1,7 @@
 What is Maven?
 https://www.youtube.com/watch?v=cTzvrCm9P9E
-Maven is a build tool.
+Maven is a project management tool and build management
+From apache and devloped in JAVA
 
 Pom.xml:
 Dependacies:->lib/jar files
@@ -10,3 +11,43 @@ What ever you give to remote repository to comes to local repository
 
 Dependancies download lib requires from the remote repository of maven.
 Plugins will have configuration 
+
+
+Maven does all management and packages automatically.
+
+---->
+Maven has 2 thigs:
+  maven core --> It just read and understands the pluging
+  plugins --> are the feature that maven gives
+      --->Core plugins
+      --->Externel plugins
+      
+How maven does everything automatically?
+It uses plugins for it.
+
+
+
+==================================>
+How to install
+https://www.youtube.com/watch?v=Z7SuDETrjaY&list=PLDhScTEBdP8wNYR-Rjy9LyXb2YFjtSUQ9&index=4
+
+1>install JDK and JRE it is prequisite for maven
+2>download the tar for Maven in /opt/
+3>Untar it 
+4>Rename the folder to smaller name
+5>set the path
+export PATH=$PATH:/opt/maven/bin
+6>check by running #mvn
+7>mvn -v
+8>mkdir project1
+9>Now get the plugins to do all automatic for you
+
+mvn archetype:generate
+-DgroupId=com.companyname.software
+-DartifactId=financialService
+-DarifacttypeArtifactId=maven-archetype-quickstart
+-DintractiveMode=false
+
+mvn --> tool name
+archetype --> plugin name
+genrate --> goal
