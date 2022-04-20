@@ -1,0 +1,81 @@
+Nexus complete installation:
+https://help.sonatype.com/repomanager3
+https://help.sonatype.com/repomanager2/installing-and-running/configuring-nexus-repository-manager-as-a-service
+step 1:
+Do prequisites:
+
+Make sure you have JDK + JRE 8 installed on thhe system
+
+Download nexus:
+wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+
+#tar -zxvf nexus.tar.gz
+
+Rname the file:
+mv nexus-3* nexus
+
+As a good security practice, it is not advised to run nexus service with root privileges. So create a new user named nexus to run the nexus service.
+
+#useradd nexus
+#passwd nexus
+
+Step 2:
+Add the following configuration into the nexus.default.properties file
+
+application-port=9595
+application-host=mahanadi.localdomain
+
+Step 3:
+Give the complete dir ownership to nexus
+
+#chown nexus:nexus -R nexus/
+#chown nexus:nexus -R sonatype-work/
+
+Step 4:
+Open the file nexus/bin/nexus.rc
+Set the user as nexus.
+
+Step 5:
+Create nexus as system service
+vi /etc/systemd/system/nexus.service
+
+[Unit]
+Description=nexus service
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=65536
+User=nexus
+Group=nexus
+ExecStart=/opt/nexus-3/nexus-3.38.1-01/bin/nexus start
+ExecStop=/opt/nexus-3/nexus-3.38.1-01/bin/nexus stop
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+#save the file.
+
+Step 6:
+To auto start the nexus service on boot.
+cd /etc/init.d
+$ chkconfig --add nexus
+$ chkconfig --levels 345 nexus on
+
+
+Step 7:
+Link nexus with nexus in init.d
+cd /etc/init.d
+ln -s /opt/nexus-3/nexus-3.38.1-01/bin/nexus nexus
+
+Step 8:
+service nexus start
+login as user admin
+(get the password as insited)
+
+Step 9:
+service nexus status:
+
+
