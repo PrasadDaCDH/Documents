@@ -477,6 +477,34 @@ Change the Distribution Management and Snapshot repository
 Step 6:
 Now we need to create 2 diffrent repos for Realease and Snapshot repos
 
+====
+Hosted : Read and write
+
+==================
+Maven proxy repo
+Go to repo.maven.apache.org/maven/
+
+============================
+How to upload?
+s1: modify pom.xml with repo location
+s2: modify setting.xml with permission
+s3: mvn deploy
+
+
+s1: edit the pom.xml distrubution management:
+#please note the id of the configuration
+
+
+How to download?
+
+
+s1: modify pom.xml dependent lib which you want to download
+s2: modify setting.xml with mirrors
+s3: mvn deploy (mvn compile)
+
+#make sure the id is the same with pom.xml that you used
+
+Now remove the dependancies and test from where it is downloading.
 
 
 
