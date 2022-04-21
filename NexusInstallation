@@ -79,3 +79,21 @@ Step 9:
 service nexus status:
 
 
+
+==========================================
+Nexus with maven
+
+types of repos:
+hosted: can read and write
+proxy: will read only form other remote : 
+group: combination of both above
+
+Maven Hosted repo:
+  Release
+  Snapshot
+ 
+Maven Proxy Repo: (this public repo will use for now)
+https://repo.maven.apache.org/maven2/
+Maven Group Repo:
+
+
