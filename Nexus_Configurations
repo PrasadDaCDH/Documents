@@ -1,0 +1,53 @@
+
+
+How to Configure the Maven with Nexus:
+Create 3 repositories:
+Hosted Maven
+Snapshot Maven
+Proxy Maven
+Group Maven (add all the above here)
+(Copy their url repectively)
+
+Create user and give full access:
+username
+password
+
+How to upload now?
+S1:
+Modify pom.xml with repo location
+S2:
+modify setting.xml with permission
+s3:
+mvn deploy
+
+:
+Get test project:
+wget https://github.com/devops-school/helloworld-java-maven/archive/refs/heads/master.zip
+
+Step 1: (Change the locaiton of the repositories)
+<distributionManagement>
+    <repository>
+        <id>sym</id>
+        <name>release softx</name>
+        <url>http://13.233.127.211:8081/nexus/content/repositories/broadall/</url>
+    </repository>
+    <snapshotRepository>
+        <id>sym</id>
+        <name>snapshot softx</name>
+        <url>http://13.233.127.211:8081/nexus/content/repositories/broadall/</url>
+    </snapshotRepository>
+</distributionManagement>
+
+
+:Make sure the id is similar
+
+Step 2:
+Go to setting.xml
+<servers> 
+  <server>
+  <id>sym</id>
+  <username>devops</username>
+  <password>password</password>
+  </server>
+</servers>
+
