@@ -1,3 +1,8 @@
 Installation of Apache Airflow in HDP:
 https://github.com/miho120/ambari-airflow-mpack#:~:text=Installing%20Apache%20Airflow%20from%20Ambari%3A&text=Select%20Apache%20Airflow%20service.,Deploy!
 https://medium.com/@khatri_chetan/setup-and-configure-multi-node-airflow-cluster-with-hdp-ambari-and-celery-for-data-pipelines-dc1e96f3d773
+
+Docs:
+https://miho120.medium.com/integrating-apache-airflow-with-apache-ambari-ccab2c90173
+https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8
+https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html
