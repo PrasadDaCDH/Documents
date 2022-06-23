@@ -1,0 +1,64 @@
+RHEL 6.x to 7.x
+Please take a backup before upgrading the RHEL
+The below setps are give referring the link
+“https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/upgrading_from_rhel_6_to_rhel_7/index#planning-an-upgrade-from-rhel-6-to-rhel-7upgrading-from-rhel-6-to-rhel-7”
+Procedure
+1.	Ensure that your system is registered to Red Hat Subscription Management (RHSM).
+2.	Ensure that you have access to the latest RHEL 6 content. If you use the yum-plugin-versionlock plug-in to lock packages to a specific version, clear the lock:
+# yum versionlock clear
+3.	Enable the Extras repository, which contains necessary packages for a pre-upgrade assessment and an in-place upgrade.
+For the Server variant on the 64-bit Intel architecture on server edition:
+# subscription-manager repos --enable rhel-6-server-extras-rpms --enable rhel-6-server-optional-rpms
+4.	Install the Preupgrade Assistant and Red Hat Upgrade Tool:
+# yum install preupgrade-assistant preupgrade-assistant-el6toel7 redhat-upgrade-tool
+5.	Update all packages to their latest RHEL 6 version:
+# yum update
+6.	Reboot the system:
+# reboot
+7.	Back up all your data before performing the upgrade to prevent potential data loss.
+8.	Verify that you are registered with the Red Hat Subscription Manager:
+# yum update
+The Loaded plug-ins: entry must contain subscription-manager.
+9.	Verify that only supported package groups are installed:
+# yum grouplist
+10.	Run the Preupgrade Assistant to perform an assessment of the system.
+# preupg
+11.	Review each assessment result entry:
+1.	Inspect result codes on the standard output For more information on assessment codes, see the Assessment result codes table.
+2.	View the assessment report in greater detail by opening the HTML file with results in a web browser:
+# web_browser file:///root/preupgrade/result.html
+12.	View the README file in the /root/preupgrade/ directory for more information about the output directory structure, exit codes, and risk explanations associated with the Preupgrade Assistant utility.
+13.	Resolve problems found by the Preupgrade Assistant during the assessment by following the Remediation text in the report.
+14.	Run the Preupgrade Assistant again. If there are no new problems to be resolved, you can proceed with upgrading your system.
+15.	Now locate the iso image file and note the path 
+
+16.	Disable active repositories to prevent problems with combining packages from different major releases of RHEL.
+i.	Install the yum-utils package:
+# yum install yum-utils
+ii.	Disable active repositories:
+# yum-config-manager --disable \*
+
+17.	Run the Red Hat Upgrade Tool to download RHEL 7 packages and prepare the package installation. Specify the location of the Red Hat Enterprise Linux 7 packages:
+1.	redhat-upgrade-tool --iso iso_path --cleanup-post
+
+18.	Reboot the system when prompted.
+1.	# reboot
+
+19.	Update your new RHEL 7 packages to their latest version.
+1.	# yum update
+# reboot
+20.	Verify that the system was upgraded to the latest version of RHEL 7.
+
+1.	# cat /etc/redhat-release
+Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+21.	Verify that the system is automatically resubscribed for RHEL 7.
+1.	# yum repolist
+
+If the repository list does not contain RHEL repositories, run the following commands to unsubscribe the system, resubscribe the system as a RHEL 7 system, and add required repositories:
+# subscription-manager remove --all
+# subscription-manager unregister
+# subscription-manager register
+# subscription-manager attach --pool=poolID
+# subscription-manager repos --enable=repoID
+
